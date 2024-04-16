@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/account_style.css' %}">
+    <title>Isdiiwaangeli</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <h2 class="active"> Isdiiwaangeli </h2>
+
+            <!-- Icon -->
+
+
+            <!-- Registration Form -->
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <input type="text" id="username" name="username" class="fadeIn second" placeholder="Username">
+                <input type="text" id="fullname" name="fullname" class="fadeIn second" placeholder="Full Name">
+                <input type="text" id="location" name="location" class="fadeIn third" placeholder="Location">
+                <input type="tel" id="phone" name="phone" class="fadeIn third" placeholder="Phone Number">
+                <input type="password" id="password" name="password" class="fadeIn third" placeholder="Password">
+                <select name="gender" class="fadeIn third">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <input type="submit" class="fadeIn fourth" value="Register">
+            </form>
+
+            <!-- Link to Login Page -->
+            <div id="formFooter">
+                <a class="underlineHover" href="{% url 'login' %}">Horeba akoon baad u lahayd?</a>
+            </div>
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {%endif%}
+        </div>
+    </div>
+</body>
+</html>
